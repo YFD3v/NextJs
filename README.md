@@ -30,6 +30,10 @@ Repare que dessa vez estamos utilizando uma variável de ambiente para a url da 
 
     Obs.: Repare que ao invés do tradicional REACT_APP_ usado com o create-react-app nós temos NEXT_PUBLIC_ para variáveis de ambiente disponíveis publicamente na aplicação. Como nossa aplicação também roda do lado do servidor isso permitiria termos variáveis de ambiente que não ficam públicas. Outra vantagem do Next.js.
 
-obs: AO realizar o deploy é necessário atualiar essas varíaveis de ambiente, no vercel é possível fazer isso pelo proprio site em configurações e em enviroment variables. Porém é necessario um novo deploy para elas serem atualizadas e funcionarem. Então, no caso da vercel, você sobe o projeto pro github novamente
+obs: AO realizar o deploy é necessário atualiar essas varíaveis de ambiente, no vercel é possível fazer isso pelo proprio site em configurações e em enviroment variables. Porém é necessario um novo deploy para elas serem atualizadas e funcionarem. Então, no caso da vercel, você sobe o projeto pro github novamente. E assim que subirem pro github serão revertidas pela vercel.
 
 Olhar dynamic.tsx
+
+Páginas Estáticas (SSG) no NEXT.JS
+Diferentemente da renderização do serverSide, essa renderização é de forma estática.
+Parecido com o server side existe a função getStaticProps, que indica para o Next.js que essa página vai ter dados dinâmicos obtidos durante o build e então disponibilizados no HTML estático que será construído:
