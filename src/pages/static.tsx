@@ -16,6 +16,8 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       staticData,
     },
+    /*Isso faz com que ele revalide os dados da página em um determinado tempo */
+    revalidate: 10,
   };
 };
 
@@ -39,7 +41,7 @@ const Static: NextPage = (props: {
 
       <Row>
         <Col>
-          {/*Apesar de ser gerado de forma estática, esses dados atualizarão */}
+          {/*Apesar de ser gerado de forma estática, esses dados atualizarão sempre que acontece a build ou com ISR */}
           <h3>Gerado estaticamente durante o build:</h3>
           <h2>{props.staticData?.timestamp.toString()}</h2>
         </Col>
