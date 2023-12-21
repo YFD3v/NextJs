@@ -16,7 +16,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       staticData,
     },
-    /*Isso faz com que ele revalide os dados da página em um determinado tempo */
+    /*Isso faz com que ele revalide os dados da página em um determinado tempo absoluto independendo se você está recarregando a página ou não. Bateu o tempo ele renderiza novamente o daddo */
     revalidate: 10,
   };
 };
