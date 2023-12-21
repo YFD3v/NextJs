@@ -54,3 +54,31 @@ Ao abrir a página, um valor gerado estaticamente é recebido.
 Atualizações repetidas mantêm esse valor inalterado no cliente, enquanto os dados do lado do cliente são atualizados a cada recarga.
 Após o tempo definido em "revalidate" (10 segundos no exemplo), o valor gerado estaticamente é atualizado, trazendo uma hora mais recente.
 Essas informações destacam a capacidade do Next.js de lidar com páginas estáticas e oferecem uma solução, o ISR, para casos em que é necessário atualizar o conteúdo estático de forma incremental, mantendo SEO e desempenho ao renderizar páginas no servidor.
+
+Criando APIs no Next.js
+Criando APIs no Next.js
+
+Objetivo:
+
+Criar rotas de API no Next.js.
+Simular um banco de dados para a aplicação.
+
+Roteiro:
+
+Criar rotas de API em Next.js.
+Simular retorno de uma lista de produtos em "/api/products".
+Utilizar uma pasta chamada "products" com um arquivo "[id].ts" para rota dinâmica "/api/products/id".
+Obter o id da propriedade query da requisição.
+Utilizar um find para encontrar o produto no array disponibilizado pelo "database.json".
+
+Estrutura de Arquivos:
+
+Pasta: pages
+Arquivo: [id].ts (em "products" folder) - Rota dinâmica para "/api/products/id".
+Arquivo: products.ts - Rota "/api/products".
+Pasta: products
+Arquivo: database.json - Simulação de banco de dados com array de produtos.
+Fluxo de Funcionamento:
+
+Acesso a "/api/products" retorna lista de produtos simulados.
+Acesso a "/api/products/id" retorna produto específico com base no id da requisição.
