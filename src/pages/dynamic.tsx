@@ -10,6 +10,7 @@ interface ApiResponse {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
+  //Coleta os dados da api, nesse caso hello, e transforma para json.
   const serverSideData: ApiResponse = await fetch(
     `${process.env.NEXT_PUBLIC_APIURL}/api/hello`
   ).then((res) => res.json());
@@ -19,20 +20,20 @@ export const getServerSideProps: GetServerSideProps = async () => {
     },
   };
 };
-
+//A prop children é obrigatória ao utilizar a tipagem de NextPage
 const Dynamic: NextPage = (props: {
   children?: ReactNode;
   serverSideData?: ApiResponse;
 }) => {
   const [clientSideData, setClientSideDate] = useState<ApiResponse>();
-
-  useEffect(() => {
-    fetchData();
-  }, []);
   const fetchData = async () => {
     const data = await fetch("/api/hello").then((res) => res.json());
     setClientSideDate(data);
   };
+  //Ao renderizar a página, a fetchData é acionada , peganndo os dados da api na hora que a página renderizou causando um delay, além de problemas GRAVES no SEO.
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <Container tag="main">

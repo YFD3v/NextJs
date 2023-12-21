@@ -6,6 +6,7 @@ import Head from "next/head";
 import { ReactNode } from "react";
 import { Container } from "reactstrap";
 
+//Ele está usando o getStaticProps, pois queremos pegar o produto com base no seu id na api dinâmica e também porque é um dado que não vai ser atualizado frequentemente, sendo assim justifica o uso do getStaticProps
 export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params?.id;
 
@@ -24,7 +25,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   };
 };
-//getStaticPaths é usada em conjunto com o getStaticProps em rotas dinâmicas para que o Next.js saiba quais são todos as rotas possíveis. Só precisamos retornar aqui uma propriedade paths, que é um array de objetos contendo uma propriedade params, que é um objeto com todos os parâmetros da rota. Também utilizamos a propriedade fallback: false para dizer que se o id não for encontrado o Next.js pode retornar uma página com erro 404, ou seja, não há nenhum fallback nesse caso:
+//getStaticPaths (serve para dizer quais rotas serão pre-renderizadas) é usada em conjunto com o getStaticProps em rotas dinâmicas para que o Next.js saiba quais são todos as rotas possíveis. Só precisamos retornar aqui uma propriedade paths, que é um array de objetos contendo uma propriedade params, que é um objeto com todos os parâmetros da rota. Também utilizamos a propriedade fallback: false para dizer que se o id não for encontrado o Next.js pode retornar uma página com erro 404, ou seja, não há nenhum fallback nesse caso:
 export const getStaticPaths: GetStaticPaths = async () => {
   const products = await fetchProducts();
 

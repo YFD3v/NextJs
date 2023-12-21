@@ -7,6 +7,7 @@ interface ApiResponse {
   timestamp: Date;
 }
 
+//Indicação de que será esses dados dinâmicos serão transformados em html estático durante o build.
 export const getStaticProps: GetStaticProps = async () => {
   const staticData = await fetch(
     `${process.env.NEXT_PUBLIC_APIURL}/api/hello`
@@ -16,7 +17,9 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       staticData,
     },
-    /*Isso faz com que ele revalide os dados da página em um determinado tempo absoluto independendo se você está recarregando a página ou não. Bateu o tempo ele renderiza novamente o daddo */
+    /*
+    Funcionalidade de ISR:
+    Isso faz com que ele revalide os dados da página em um determinado tempo absoluto independendo se você está recarregando a página ou não. Bateu o tempo ele renderiza novamente o daddo */
     revalidate: 10,
   };
 };

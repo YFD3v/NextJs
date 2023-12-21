@@ -1,4 +1,4 @@
-//Simulando as chamadas da pi
+//Simulando as chamadas da api
 //onde guardaremos as funções para chamar a API.
 export type ProductType = {
   id: number;
